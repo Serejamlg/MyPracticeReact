@@ -1,15 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Header from './Header';
-import Tehnologies from './Technologies';
+import Header from './components/Header';
+import Nav from './components/Nav';
+import Profile from './components/Profile';
+// import Tehnologies from './Technologies';
 function App() {
   return (
-    <div>
-      
+    <div className='app-wrapper'>
         <Header/>
-        <Tehnologies/>
-      </div>);
+        <Nav/>
+        <Profile/>
+    </div>);
 }
 
 
