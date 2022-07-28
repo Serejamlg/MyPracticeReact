@@ -1,0 +1,14 @@
+.header {
+    grid-area: h;
+    background-color: rgb(221, 221, 221);
+}
+
+header img {
+    height: 100px;
+    
+}
+.LogoItem {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+}
