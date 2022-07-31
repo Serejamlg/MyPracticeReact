@@ -1,56 +1,46 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import s from './Dialogs.module.css';
-
-const DialogItem = (props) => {
-    let path = "/dialogs/" + props.id;
-
-    return (
-        <div className={s.dialog + ' ' + s.active}>
-            <NavLink to={path}>{props.name}</NavLink>
-        </div>
-    )
-}
-
-const MessageItem = (props) => {
-    return (
-        <div className={s.message}>
-            {props.message}
-        </div>
-    )
-}
-
-
-
+import DialogItem from "./DialogsItem/DialogItem";
+import MessageItem from "./Message/Message";
+import { NavLink } from "react-router-dom";
 
 const Dialogs = (props) => {
-        let dialogsData = [
-            {name: 'Veronoka', id: 1},
-            {name: 'Dendi', id: 2}, 
-            {name: 'Sereja', id: 3}
-        ]
+
+    
+    let dialogsElements = props.state.dialogsData.map(dialog =>
+        <DialogItem name={dialog.name} id={dialog.id} />
+    )
+   
+    let messagesElements = props.state.messagesData.map(messages =>
+        <MessageItem message={messages.message} id={messages.id} />
+    )
+
+    let newMessageElement = React.createRef();
+
+
+    let addMessage = () => {
+        let messageText = newMessageElement.current.value 
         
-        let messagesData = [
-            {message: 'Hello', id: 1},
-            {message: 'МЯУ МЯУ', id: 2},
-            {message: 'Как дела?', id: 3}
-        ]
+    }
     
 
     return (
         <div>
             <div className={s.dialogs}>
                 <div className={s.dialogsItem}>
-                    <DialogItem name={dialogsData[0].name} id={dialogsData[0].id} />
-                    <DialogItem name={dialogsData[1].name} id={dialogsData[1].id} />
-                    <DialogItem name={dialogsData[2].name} id={dialogsData[2].id} />
+                    {dialogsElements}
                 </div>
-
+                
                 <div className={s.messages}>
-                    <MessageItem message={messagesData[0].message} id={messagesData[0].id} />
-                    <MessageItem message={messagesData[1].message} id={messagesData[1].id} />
-                    <MessageItem message={messagesData[2].message} id={messagesData[2].id}/>
+                    {messagesElements}
                 </div>
+            </div>
+            <div className={s.createMessageDiv}></div>
+            <div className={s.messageTextDiv}>
+                <textarea ref={newMessageElement} className={s.messageText} name="messageText" id="" cols="100" rows="5"></textarea>
+            </div>
+            <div className={s.messageTextDiv}>
+            <button onClick={addMessage} className={s.btnMessage}>Отправить</button>
             </div>
         </div>
     )

@@ -5,7 +5,7 @@
 }
 .dialogsItem .active  {
     color: gold;
-    padding: 10px;
+    padding: 2px;
 }
 
 .dialog {
@@ -17,5 +17,20 @@
 }
 
 .message {
+}
 
+.btnMessage {
+    width: 100%;
+    height: 30px;
+}
+.messageText {
+    width: 99%;
+    
+}
+.messageTextDiv {
+    padding:4px;
+}
+
+.createMessageDiv {
+    margin-top: 30%;
 }
